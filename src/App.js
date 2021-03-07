@@ -7,6 +7,7 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
+      fadeType: "fadeIn",
       items: [],
     };
     this.fetchApi = this.fetchApi.bind(this);
@@ -44,16 +45,17 @@ class App extends React.Component {
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, fadeType } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <QuoteBox firstReload={true} />;
     } else {
       return (
         <QuoteBox
           handleNewQuote={this.handleNewQuote}
           quote={items.quotes[0]}
+          fadeType={fadeType}
         />
       );
     }

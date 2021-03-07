@@ -1,0 +1,13 @@
+#quote-box {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-right: auto; /* 1 */
+  margin-left: auto; /* 1 */
+  max-width: 600px; /* 2 */
+  height: 200px;
+  padding: 10px;
+
+  #text {
+    height: 100px;
+  }
+}
