@@ -26,7 +26,7 @@ export default function QuoteBox({
         {quote.text}
       </p>
       <p id="author" className={fadeType}>
-        {quote.author}
+        - {quote.author}
       </p>
       <button id="new-quote" onClick={handleNewQuote}>
         New quote
