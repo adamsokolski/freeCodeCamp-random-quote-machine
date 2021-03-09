@@ -16,13 +16,13 @@ export default function QuoteBox({
     return <div id="quote-box"></div>;
   }
   const intentTweet = `https://twitter.com/intent/tweet?text="${quote.text}" ${quote.author}`;
-  const tweetLength = (quote.text + quote.author).length;
+  /* const tweetLength = (quote.text + quote.author).length;
   let isDisabled;
   if (tweetLength > 280) {
     isDisabled = true;
   } else {
     isDisabled = false;
-  }
+  } */
 
   return (
     <div id="quote-box">
