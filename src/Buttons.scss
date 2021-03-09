@@ -1,0 +1,54 @@
+.buttons-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 10px;
+  position: fixed;
+  margin-right: auto; /* 1 */
+  margin-left: auto; /* 1 */
+  width: 94vw;
+  max-width: 900px;
+
+  button {
+    background-color: transparent;
+    color: white;
+    padding: 5px 25px 5px 25px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 3px;
+    margin: 10px;
+  }
+
+  button:hover {
+    background-color: red;
+    color: black;
+    transition: 200ms;
+  }
+
+  .new-quote {
+    border: 2px solid white;
+  }
+
+  .new-quote:hover {
+    background-color: white;
+    color: black;
+    transition: 200ms;
+  }
+
+  .tweet {
+    border: 2px solid #1da1f2;
+  }
+
+  .tweet:hover {
+    background-color: #1da1f2;
+    color: transparent;
+    transition: 200ms;
+    a {
+      color: #333;
+    }
+  }
+  a {
+    color: #1da1f2;
+    text-decoration: none;
+  }
+}

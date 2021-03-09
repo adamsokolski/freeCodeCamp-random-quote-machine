@@ -1,6 +1,10 @@
 import React from "react";
 import "./QuoteBox.scss";
 import "./QuoteBoxAnimations.scss";
+import "./Buttons.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default function QuoteBox({
   quote,
@@ -22,20 +26,38 @@ export default function QuoteBox({
 
   return (
     <div id="quote-box">
-      <p id="text" className={fadeType}>
-        {quote.text}
-      </p>
-      <p id="author" className={fadeType}>
-        - {quote.author}
-      </p>
-      <button id="new-quote" onClick={handleNewQuote}>
-        New quote
-      </button>
-      <button disabled={isDisabled}>
-        <a href={intentTweet} id="tweet-quote" target="_blank" rel="noreferrer">
-          Tweet quote
-        </a>
-      </button>
+      <div className="quote-indside-box">
+        <p id="text" className={fadeType}>
+          {quote.text}
+        </p>
+        <p id="author" className={fadeType}>
+          - {quote.author}
+        </p>
+      </div>
+
+      <div className="buttons-box">
+        <button id="new-quote" className="new-quote" onClick={handleNewQuote}>
+          <FontAwesomeIcon icon={faSyncAlt} />
+        </button>
+        <button
+          className="tweet"
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.href = intentTweet;
+          }}
+        >
+          {" "}
+          <a
+            href={intentTweet}
+            id="tweet-quote"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+        </button>
+      </div>
     </div>
   );
 }
