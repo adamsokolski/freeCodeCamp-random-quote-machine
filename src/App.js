@@ -7,7 +7,8 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      fadeType: "fadeIn",
+      newQuote: true,
+      disableButton: false,
       items: [],
     };
     this.fetchApi = this.fetchApi.bind(this);
@@ -24,9 +25,6 @@ class App extends React.Component {
             items: result,
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -41,21 +39,37 @@ class App extends React.Component {
   }
 
   handleNewQuote() {
-    this.fetchApi();
+    // Start fading out quote and disable button
+    this.setState((state) => ({
+      newQuote: !state.newQuote,
+      disableButton: true,
+    }));
+    setTimeout(() => {
+      this.fetchApi();
+    }, 1000);
+
+    // Start fading in and enable button
+    setTimeout(() => {
+      this.setState((state) => ({
+        newQuote: !state.newQuote,
+        disableButton: false,
+      }));
+    }, 1100);
   }
 
   render() {
-    const { error, isLoaded, items, fadeType } = this.state;
+    const { error, isLoaded, items, newQuote, disableButton } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <QuoteBox firstReload={true} />;
+      return <div></div>;
     } else {
       return (
         <QuoteBox
           handleNewQuote={this.handleNewQuote}
           quote={items.quotes[0]}
-          fadeType={fadeType}
+          newQuote={newQuote}
+          disableButton={disableButton}
         />
       );
     }
